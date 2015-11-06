@@ -29,7 +29,7 @@
 
 (def websocket-callbacks
   {:on-open (fn [channel]
-              (async/send! channel "Ready to reverse your messages!"))
+              (async/send! channel (json/write-str (generate-response "status" "connected"))))
    :on-close (fn [channel {:keys [code reason]}]
                (println "close code:" code "reason:" reason))
    :on-message (fn [ch m]
