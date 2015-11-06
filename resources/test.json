@@ -1,0 +1,49 @@
+{
+	"songs" : [
+		{
+			"contributor" : "james tiberius",
+			"id" : 1,
+			"anonymous" : false,
+			"secret" : false,
+			"songName" : "To Boldly Go",
+			"artist" : "Michael Giacchino",
+			"album" : "Star Trek (Music From The Motion Picture)",
+			"albumArt" : "https://i.scdn.co/image/523047a05bdd8270babff4b79a5bbf7470a35e1c",
+			"length" : 26813,
+			"uri" : "spotify:track:6tJqB6qDczJr6jmhpaCQ6Y"
+		}, {
+			"contributor" : "AMERICA'S FAVORITE FIGHTING FRENCHMAN",
+			"id" : 2,
+			"anonymous" : false,
+			"secret" : false,
+			"songName" : "Guns and Ships",
+			"artist" : "Leslie Odom Jr.",
+			"album" : "Hamilton (Original Broadway Cast Recording)",
+			"albumArt" : "https://i.scdn.co/image/680f63e0199dc160f414b5be084b3d91493c67a6",
+			"length" : 127578,
+			"uri" : "spotify:track:7m9XR7FquXLP1FewdAcNS9"
+		} , {
+			"contributor" : "my boy alex h",
+			"id" : 5,
+			"anonymous" : false,
+			"secret" : false,
+			"songName" : "Non-Stop",
+			"artist" : "Lin-Manuel Miranda",
+			"album" : "Hamilton (Original Broadway Cast Recording)",
+			"albumArt" : "https://i.scdn.co/image/680f63e0199dc160f414b5be084b3d91493c67a6",
+			"length" : 127578,
+			"uri" : "spotify:track:7qfoq1JFKBUEIvhqOHzuqX"
+		} , {
+			"contributor" : "THE KING OF MARS",
+			"id" : 3,
+			"anonymous" : false,
+			"secret" : false,
+			"songName" : "Sprouting Potatoes",
+			"artist" : "Harry Gregson-Williams",
+			"album" : "The Martian: Original Motion Picture Score",
+			"albumArt" : "https://i.scdn.co/image/eaa275bf458009a931b00e38391670a8a965eff0",
+			"length" : 99253,
+			"uri" : "spotify:track:3a317lT5RBOHUf0gbuxfiL"
+		}
+	]
+}
