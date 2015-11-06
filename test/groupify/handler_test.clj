@@ -1,7 +1,7 @@
 (ns groupify.handler-test
   (:require [clojure.test :refer :all]
             [ring.mock.request :as mock]
-            [groupify.handler :refer :all]))
+            [groupify.core :refer :all]))
 
 (deftest test-app
   (testing "main route"

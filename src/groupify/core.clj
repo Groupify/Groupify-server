@@ -1,51 +1,38 @@
 (ns groupify.core
   (:require [compojure.core :refer :all]
-            [clostache.parser :refer :all]
             [compojure.route :as route]
             [immutant.web :as web]
             [immutant.web.async :as async]
             [immutant.web.middleware :as web-middleware]
-            [clojure.data.json :as json]
             [ring.util.response :refer [resource-response response redirect]]
             [ring.middleware.json :as middleware]
-            [ring.middleware.defaults :refer [wrap-defaults api-defaults]])
+            [ring.middleware.defaults :refer [wrap-defaults api-defaults]]
+            [clostache.parser :refer :all]
+            [clojure.data.json :as json]
+            [groupify.ws-actions :as ws-actions]
+            [groupify.log :refer :all])
   (:gen-class))
 
-(defn generate-response [action data] {:action action :data data})
-
-(defn handle-ping [data] (generate-response "pong" data))
-(defn handle-pong [data] (generate-response "ping" data))
-(defn handle-default [action data] (generate-response "error" (render "\"{{action}}\" is not a valid action." {:action action})))
-
-(defn get-ws-response-for [ch m]
-  (let [message (json/read-str m)
-        data (get message "data")
-        action (get message "action")]
-    (case action
-      "ping" (handle-ping data)
-      "pong" (handle-pong data)
-      (handle-default action data))
-    ))
-
+; Define callbacks for key web socket events (open, close, message received)
 (def websocket-callbacks
   {:on-open (fn [channel]
-              (async/send! channel (json/write-str (generate-response "status" "connected"))))
+              (async/send! channel (json/write-str (ws-actions/generate-response "status" "connected"))))
    :on-close (fn [channel {:keys [code reason]}]
-               (println "close code:" code "reason:" reason))
+               (log "close code:" code "reason:" reason))
+   ; A message has been received to parse.
    :on-message (fn [ch m]
-                 (async/send! ch (json/write-str (get-ws-response-for ch m))))})
+                 (async/send! ch (json/write-str (ws-actions/get-ws-response-for ch m))))})
 
+(defn error-response [error]
+  "Returns an HTML error response with the given message"
+  (render-resource "public/error.html" {:message error}))
 
 (defroutes app-routes
-           #_(GET "/" [] (resource-response "index.html"
-                                          {:root "public"}))
            (GET "/" {c :context} (redirect (str c "/index.html")))
-           (GET "/widgets" [] (response
-                                [{:name "Widget 1"}
-                                 {:name "Widget 2"}]))
            (route/resources "/")
-           (route/not-found "Not Found"))
+           (route/not-found (error-response "Page not found.")))
 
+; Entry point.  Run the server with immutant/web.
 (defn -main [& {:as args}]
   (web/run
     (-> app-routes
@@ -54,8 +41,3 @@
     (merge {"host" "0.0.0.0"
             "port" 4545}
            args)))
-
-#_(def app
-  (-> app-routes
-      (middleware/wrap-json-body)
-      (middleware/wrap-json-response)))
