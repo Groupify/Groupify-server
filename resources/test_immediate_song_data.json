@@ -1,0 +1,17 @@
+{
+	"action" : "playImmediately",
+	"data": {
+		"song" : {
+			"contributor" : "a woman who has never been satisfied",
+			"id" : 12,
+			"anonymous" : false,
+			"secret" : false,
+			"songName" : "The Schuyler Sisters",
+			"artist" : "Renee Elise Goldsberry",
+			"album" : "Hamilton (Original Broadway Cast Recording)",
+			"albumArt" : "https://i.scdn.co/image/680f63e0199dc160f414b5be084b3d91493c67a6",
+			"length" : 186542,
+			"uri" : "spotify:track:71X7bPDljJHrmEGYCe7kQ8"
+		}
+	}
+}

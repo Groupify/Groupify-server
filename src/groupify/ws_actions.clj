@@ -6,7 +6,7 @@
 (def no-response nil)
 (def host_channel (atom nil))
 
-(def dummy-data (slurp "resources/test_server_data.json"))
+(def dummy-data (slurp "resources/test_immediate_song_data.json"))
 
 (defn generate-response [action data] {:action action :data data :identity "server"})
 
