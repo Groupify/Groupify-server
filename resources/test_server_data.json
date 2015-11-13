@@ -1,0 +1,53 @@
+{
+	"action" : "update-queue",
+	"identity" : "server",
+	"data": {
+		"songs" : [
+			{
+				"contributor" : "chris",
+				"id" : 1,
+				"anonymous" : false,
+				"secret" : false,
+				"songName" : "Sad",
+				"artist" : "Bo Burnham",
+				"album" : "what.",
+				"albumArt" : "https://i.scdn.co/image/3c5b4817e8a67128999cd56e3af5aad81b3c6fa9",
+				"length" : 263099,
+				"uri" : "spotify:track:07xM26pWCDsUWV2ialwgNf"
+			}, {
+				"contributor" : "niki",
+				"id" : 2,
+				"anonymous" : false,
+				"secret" : false,
+				"songName" : "Helpless",
+				"artist" : "Phillipa Soo",
+				"album" : "Hamilton (Original Broadway Cast Recording)",
+				"albumArt" : "https://i.scdn.co/image/680f63e0199dc160f414b5be084b3d91493c67a6",
+				"length" : 249770,
+				"uri" : "spotify:track:54Sc7mZQ1RM03STpk4SfaA"
+			}, {
+				"contributor" : "chris",
+				"id" : 3,
+				"anonymous" : false,
+				"secret" : false,
+				"songName" : "Left Brain, Right Brain",
+				"artist" : "Bo Burnham",
+				"album" : "what.",
+				"albumArt" : "https://i.scdn.co/image/3c5b4817e8a67128999cd56e3af5aad81b3c6fa9",
+				"length" : 394392,
+				"uri" : "spotify:track:19Atssu8qmXPrB9jnxeqZZ"
+			}, {
+				"contributor" : "niki",
+				"id" : 4,
+				"anonymous" : false,
+				"secret" : false,
+				"songName" : "Satisfied",
+				"artist" : "Renee Elise Goldsberry",
+				"album" : "Hamilton (Original Broadway Cast Recording)",
+				"albumArt" : "https://i.scdn.co/image/680f63e0199dc160f414b5be084b3d91493c67a6",
+				"length" : 329228,
+				"uri" : "spotify:track:3dP0pLbg9OfVwssDjp9aT0"
+			}
+		]
+	}
+}

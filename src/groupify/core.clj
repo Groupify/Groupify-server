@@ -13,20 +13,37 @@
             [groupify.log :refer :all])
   (:gen-class))
 
+
+
+
+(defn check-if-host [channel m]
+  (let [message (json/read-str m)
+        ident (get message "identity")]
+    (when (= ident "host")
+      (reset! ws-actions/host_channel channel)
+      (log "Set host channel"))))
+
 ; Define callbacks for key web socket events (open, close, message received)
 (def websocket-callbacks
   {:on-open (fn [channel]
+              (log "Connection opened")
               (async/send! channel (json/write-str (ws-actions/generate-response "status" "connected"))))
    :on-close (fn [channel {:keys [code reason]}]
-               (log "close code:" code "reason:" reason))
+               (log "Connection closed"))
    ; A message has been received to parse.
-   :on-message (fn [ch m]
-                 (async/send! ch (json/write-str (ws-actions/get-ws-response-for ch m))))})
+   :on-message (fn [channel message]
+                 (log "Received:\n " message)
+                 (check-if-host channel message)
+                 (if-let [response (ws-actions/get-ws-response-for channel message)]
+                   (do (async/send! channel (json/write-str response))
+                       (log "Sent:\n " (json/write-str response) "\n\n"))
+                   nil))})
 
 (defn error-response [error]
   "Returns an HTML error response with the given message"
   (render-resource "public/error.html" {:message error}))
 
+; Routes exposed by the server
 (defroutes app-routes
            (GET "/" {c :context} (redirect (str c "/index.html")))
            (route/resources "/")

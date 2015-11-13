@@ -1,4 +1,4 @@
-(ns groupify.handler-test
+(ns groupify.core-test
   (:require [clojure.test :refer :all]
             [ring.mock.request :as mock]
             [groupify.core :refer :all]))
